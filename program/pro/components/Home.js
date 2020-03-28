@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {View,Text, Image,TextInput,ScrollView,StyleSheet, StatusBar,Dimensions, TouchableOpacity, FlatList} from 'react-native'
 import {Icon} from '@ant-design/react-native'
-const {width} = Dimensions.get('window')
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 export default class Home extends Component {
     constructor(){
         super();
@@ -39,7 +40,7 @@ export default class Home extends Component {
                     </View>
                 </View>
 
-                <View style={{height:200}}>
+                <View style={{height:devHeight*0.25}}>
                     <ScrollView horizontal={true} pagingEnabled={true} contentContainerStyle={{height:220}}>
                         <View style={styles.style1}>
                             <Image style={styles.imageStyle} source={{uri:'http://pic1.win4000.com/wallpaper/2020-02-27/5e57258de761a.jpg'}}/>
@@ -61,7 +62,7 @@ export default class Home extends Component {
                             <View style={styles.style6}>
                                 <Icon name={item.icon} style={styles.iconStyle}/>
                             </View>
-                            <Text style={{width:200,marginRight:150}}>{item.name}</Text>
+                            <Text style={{width:devWidth*0.6,marginRight:devWidth*0.1}}>{item.name}</Text>
                             <Icon name="right"/>
                         </View>
                     }}
@@ -84,23 +85,24 @@ const styles = StyleSheet.create({
         backgroundColor:'#f4f4f4'
     },  
     style1:{
-        width,
+        width:devWidth,
     },
     style2:{
         flexDirection:'row',
         backgroundColor:'#f23030',
         justifyContent:'space-around',
-        alignItems:'center'
+        alignItems:'center',
+        height:devWidth*0.1
     },
     style3:{
         flexDirection:'row',
         alignItems:'center',
         backgroundColor:'rgba(255,255,255,0.8)',
-        height:'70%',
-        width:'85%',
+        height:devHeight*0.04,
+        width:devWidth*0.85,
         borderColor:'white',
-        borderRadius:50,
-        paddingLeft:20
+        borderRadius:devWidth*0.04*0.5,
+        paddingLeft:devWidth*0.02
     },
     style4:{
         height:60,
@@ -110,16 +112,16 @@ const styles = StyleSheet.create({
     style5:{
         flexDirection:'row',
         alignItems:'center',
-        width,
-        height:70,
-        marginTop:8,
+        width:devWidth,
+        height:devHeight*0.1,
+        marginTop:devHeight*0.1*0.1,
         backgroundColor:'white',
         paddingLeft:20
     },
     style6:{
-        width:50,
-        height:50,
-        borderRadius:25,
+        width:devWidth*0.11,
+        height:devHeight*0.06,
+        borderRadius:devHeight*0.06*0.5,
         backgroundColor:'#ffcccc',
         marginRight:30,
         alignItems:'center',
@@ -127,8 +129,8 @@ const styles = StyleSheet.create({
     },
     style7:{
         backgroundColor:'#f23030',
-        width:300,
-        height:45,
+        width:devWidth*0.5,
+        height:devHeight*0.05,
         borderRadius:10,
         alignItems:'center',
         justifyContent:'center'
@@ -139,11 +141,11 @@ const styles = StyleSheet.create({
         marginTop:20
     },
     imageStyle:{
-        width,
-        height:220
+        width:devWidth,
+        height:devHeight*0.25
     },
     iconStyle:{
-        fontSize:40,
+        fontSize:devWidth*0.05,
         color:'white'
     },
     textStyle:{

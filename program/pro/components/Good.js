@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import {View,Text,StyleSheet,Image,TextInput, ScrollView, FlatList} from 'react-native'
+import {View,Text,StyleSheet,Image,TextInput, ScrollView, FlatList,Dimensions} from 'react-native'
 import {Icon} from '@ant-design/react-native'
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 export default class Jia extends Component {
     constructor(){
         super();
@@ -40,8 +42,8 @@ export default class Jia extends Component {
 
                     <View style={styles.search}>
                         <View style={styles.searchC}>
-                        <TextInput style={{width:'90%'}}placeholder="请输入商品名称"/>
-                        <Icon name="search"/>
+                        <TextInput style={{width:devWidth*0.7}}placeholder="请输入商品名称"/>
+                        <Icon style={{color:'red'}} name="search"/>
                         </View>
                     </View>
 
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
       alignItems:'center',
       justifyContent:'center',
       marginBottom:1,
-      height:45
+      height:devHeight*0.05
     },
     searchC:{
       flexDirection:'row',
@@ -88,8 +90,8 @@ const styles = StyleSheet.create({
       marginBottom:5,
       justifyContent:'flex-start',
       alignItems:'center',
-      width:'80%',
-      height:'70%'
+      width:devWidth*0.8,
+      height:devHeight*0.04
     },
     lie:{
       flexDirection:'row',
@@ -99,16 +101,17 @@ const styles = StyleSheet.create({
       alignItems:'center'
     },
     goods:{
-      height:750
+      height:devHeight*0.8,
+      width:devWidth
     },
     goodsChild:{
       justifyContent:'center',
       alignItems:'center',
-      width:225,
-      height:270,
+      width:devWidth*0.46,
+      height:devHeight*0.3,
       backgroundColor:'white',
       marginTop:10,
       padding:10,
-      marginLeft:8
+      marginLeft:devWidth*0.02
     }
   });

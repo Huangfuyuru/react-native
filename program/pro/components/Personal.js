@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import {View,Text,AsyncStorage, Image,StyleSheet, FlatList,Dimensions,StatusBar,TouchableOpacity} from 'react-native'
+import {View,Text,AsyncStorage,Image,StyleSheet, FlatList,Dimensions,StatusBar,TouchableOpacity} from 'react-native'
 import {Icon, Button} from '@ant-design/react-native'
 const {width} = Dimensions.get('window')
 import ImagePicker from 'react-native-image-picker';
 import {Actions} from 'react-native-router-flux'
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 const options = {
     title: 'Select Avatar',
     customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
@@ -22,8 +24,7 @@ export default class Personal extends Component {
                 {iconN:'solution',title:'我的信息'},
                 {iconN:'exception',title:'我的订单'},
                 {iconN:'qrcode',title:'我的二维码'},
-                {iconN:'pay-circle',title:'我的积分'},
-                {iconN:'star',title:'我的收藏'},
+                {iconN:'pay-circle',title:'我的积分'}
             ],
             list2:[
                 {iconN:'filter',title:'维修保养'},
@@ -128,7 +129,7 @@ export default class Personal extends Component {
 
 const styles = StyleSheet.create({
     exit:{
-        height:30,
+        height:devHeight*0.035,
         width:130,
         borderRadius:15,
         backgroundColor:'red',
@@ -144,13 +145,13 @@ const styles = StyleSheet.create({
         backgroundColor:'#f23030',
         justifyContent:'center',
         alignItems:'center',
-        height:250
+        height:devHeight*0.3
     },
     s2:{
         flexDirection:'row',
         borderBottomColor:'#f0f0f0',
         borderBottomWidth:1,
-        height:40,
+        height:devHeight*0.05,
         alignItems:'center',
         justifyContent:'flex-start',
         paddingLeft:10
@@ -158,10 +159,11 @@ const styles = StyleSheet.create({
     s3:{
         marginBottom:8,
         backgroundColor:'white',
+        height:devHeight*0.22
     },
     s4:{
         width:width*0.33,
-        height:60,
+        height:devHeight*0.08,
         justifyContent:'center',
         alignItems:'center'
     },

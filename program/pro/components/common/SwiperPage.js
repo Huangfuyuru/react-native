@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import {View,Text,Image,StyleSheet,TouchableOpacity,AsyncStorage} from 'react-native'
+import {View,Text,Image,StyleSheet,TouchableOpacity,AsyncStorage,Dimensions} from 'react-native'
 import Swiper from 'react-native-swiper';
 import { Actions } from 'react-native-router-flux';
+
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 export default class SwiperPage extends Component {
     start = async ()=> {
         await AsyncStorage.setItem('isInstall','true');
@@ -20,7 +23,7 @@ export default class SwiperPage extends Component {
                 <View style={styles.slide1}>
                     <Image style={styles.image} source={require('../../assets/s3.jpg')}/>
                     <TouchableOpacity style={styles.start} onPress={this.start}>
-                        <Text>开始体验</Text>
+                        <Text style={{fontSize:devWidth*0.04}}>开始体验</Text>
                     </TouchableOpacity>
                 </View>
             </Swiper>
@@ -39,16 +42,15 @@ const styles = StyleSheet.create({
     },
     start:{
         position:'absolute',
-        bottom:50,
-        width:120,
-        height:30,
+        bottom:devWidth*0.1,
+        width:devWidth*0.3,
+        height:devHeight*0.05,
         backgroundColor:'pink',
-        borderRadius:20,
+        borderRadius:devWidth*0.01,
         justifyContent:'center',
         alignItems:'center',
-        fontSize:35
     },
     image:{
-        height:810,
+        height:devHeight,
     }
 })

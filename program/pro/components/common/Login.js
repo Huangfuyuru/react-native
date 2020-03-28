@@ -1,10 +1,11 @@
 //钉钉搜索栏
 import React,{Component} from 'react'
-import {Text,View,StyleSheet, TouchableOpacity,Image, TextInput,AsyncStorage} from 'react-native'
+import {Text,View,StyleSheet, TouchableOpacity,Image, TextInput,AsyncStorage,Dimensions} from 'react-native'
 import {Grid,Icon} from '@ant-design/react-native'
 import {Actions} from 'react-native-router-flux'
 import {myFetch} from '../utils/index'
-
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 export default class Login extends Component{
     constructor(){
         super();
@@ -48,14 +49,14 @@ export default class Login extends Component{
                 flex:1
             }}>
                 <View style={{
-                    width:'80%',
+                    width:devWidth*0.8,
                     backgroundColor:'#ccc',
-                    borderRadius:20,
+                    height:devHeight*0.06,
+                    borderRadius:devHeight*0.06*0.5,
                     flexDirection:'row',
                     alignItems:'center',
-                    paddingLeft:20,
-                    marginRight:10,
-                    marginBottom:20
+                    paddingLeft:devWidth*0.02,
+                    marginBottom:devHeight*0.02
                 }}>
                     <Icon name="user" color="blue"/>
                     <TextInput placeholder="用户名"
@@ -63,14 +64,14 @@ export default class Login extends Component{
                     />
                 </View>
                 <View style={{
-                    width:'80%',
+                    width:devWidth*0.8,
                     backgroundColor:'#ccc',
-                    borderRadius:20,
+                    height:devHeight*0.06,
+                    borderRadius:devHeight*0.06*0.5,
                     flexDirection:'row',
                     alignItems:'center',
-                    paddingLeft:20,
-                    marginRight:10,
-                    marginBottom:20
+                    paddingLeft:devWidth*0.02,
+                    marginBottom:devHeight*0.02
                 }}>
                     <Icon name="home" color="blue"/>
                     <TextInput 
@@ -82,31 +83,32 @@ export default class Login extends Component{
                     alignItems:'center'
                 }}>
                 <TouchableOpacity style={{
-                    width:200,
-                    height:35,
+                    width:devWidth*0.5,
+                    height:devHeight*0.04,
                     borderWidth:1,
                     borderColor:'#ccc',
-                    borderRadius:22,
+                    borderRadius:devHeight*0.04*0.5,
                     justifyContent:'center',
                     alignItems:'center'
                 }} onPress={this.login}>
                     <Text style={{
                         color:'#000',
-                        fontSize:20
+                        fontSize:devWidth*0.04
                     }}>登陆</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{
-                    width:30,
-                    height:20,
+                    width:devWidth*0.1,
+                    height:devHeight*0.03,
                     borderWidth:1,
-                    marginLeft:50,
+                    marginLeft:devWidth*0.05,
                     justifyContent:'center',
                     alignItems:'center',
-                    borderRadius:3
+                    borderRadius:devHeight*0.03*0.1
                 }}
                 onPress={this.signUp}>
                     <Text style={{
-                        color:'red'
+                        color:'red',
+                        fontSize:devWidth*0.03
                     }}>注册</Text>
                 </TouchableOpacity>
                 </View>
