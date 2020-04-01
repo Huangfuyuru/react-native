@@ -18,10 +18,13 @@ import {
   Image,
   AsyncStorage,
   BackHandler,
-  ToastAndroid
+  ToastAndroid,
+  Dimensions
 } from 'react-native';
 import {Icon, Modal} from '@ant-design/react-native'
 import {Router,Scene,Tabs, Lightbox, Actions} from 'react-native-router-flux'
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 import Good from './components/Good'
 import Home from './components/Home'
 import ShoppingCar from './components/ShoppingCar'
@@ -45,10 +48,14 @@ const App = () => {
     let q = await AsyncStorage.getItem('user');
     if(q){
       let user = JSON.parse(q);
+      console.log(user,user.token)
       if(!user){
+        console.log('没有登陆');
         SplashScreen.hide();
       }
-      if(user && user.token){
+      if(user){
+        console.log('xx');
+
         SplashScreen.hide();
         setLogin(true);
         
@@ -59,6 +66,7 @@ const App = () => {
     
   }
   useEffect(() => {
+    console.log('初始化')
     //AsyncStorage.clear() //清理内存
     init();
   }, [])
@@ -76,13 +84,11 @@ const App = () => {
     <Router
       backAndroidHandler={()=>{
         if(Actions.currentScene != 'homeC'){
-          console.log(Actions.currentScene.key)
-          console.log('okok')
+          console.log('不是homeC')
           Actions.pop();
           return true;
         }else{
-          console.log("Actions.currentScene",Actions.currentScene)
-          console.log('okok222S')
+          console.log('是homeC')
           if(new Date().getTime() - now <2000){
             BackHandler.exitApp()
           }else{
@@ -134,8 +140,9 @@ const App = () => {
               navBarButtonColor="white" 
               key="content" 
               component={Content}
-              renderRightButton={()=><Icon name="ellipsis" color="white" style={{fontSize:30,marginRight:20}}/>}
-              renderTitle={()=><View style={{marginLeft:130}}><Text style={{fontSize:20,color:'white'}}>我的发布</Text></View>}
+              renderLeftButton={()=><Icon name="arrow-left" color="white" style={{fontSize:30,width:devWidth*0.35}}/>}
+              renderRightButton={()=><Icon name="ellipsis" color="white" style={{fontSize:30,width:devWidth*0.25}}/>}
+              renderTitle={()=><View style={{width:devWidth*0.5,justifyContent:'center'}}><Text style={{fontSize:20,color:'white'}}>我的发布</Text></View>}
               />
             </Scene>
           </Tabs>

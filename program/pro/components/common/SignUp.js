@@ -12,20 +12,40 @@ export default class Login extends Component{
         this.state={
             username:'xxx',
             pwd:'',
-            isloading:false
+            isloading:false,
+            isOK:false,
+            list:[]
         }
     }
+    componentDidMount(){
+        console.log('xxx')
+        AsyncStorage.getItem('user2')
+        .then(res=>{
+            if(res){
+                res = JSON.parse(res);
+                this.setState({list:res});
+                console.log(this.state.list)
+            }
+        })
+    }
     login=()=>{
-        this.setState({isloading:true})
+        this.setState({isloading:true,isOK:false})
         myFetch.post('/signup',{
             username:this.state.username,
             pwd:this.state.pwd
         }).then(res=>{
-            console.log(res.data);
-            AsyncStorage.setItem('user2',JSON.stringify(res.data))
-            .then(()=>{
-                Actions.login()
-            })
+            if(res.data.token === 1){
+                this.setState({isOK:true,isloading:false})
+            }else{
+                this.setState({list:[...this.state.list,res.data]},()=>{
+                    AsyncStorage.setItem('user2',JSON.stringify(this.state.list))
+                    .then(()=>{
+                        Actions.login()
+                    })
+                })
+                
+            }
+            
         })
     }
     userhandle=(text)=>{
@@ -110,7 +130,10 @@ export default class Login extends Component{
                 </View>
                 
                 {
-                    this.state.isloading?<View><Text>注册成功</Text></View>:null
+                    this.state.isloading?<View><Text>正在注册</Text></View>:null
+                }
+                {
+                    this.state.isOK?<View><Text>注册失败</Text></View>:null
                 }
             </View>
         )

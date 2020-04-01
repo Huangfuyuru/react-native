@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import {View,Text,TouchableOpacity,FlatList,StyleSheet,ToastAndroid} from 'react-native'
+import {View,Text,TouchableOpacity,FlatList,StyleSheet,ToastAndroid,Dimensions} from 'react-native'
+
+const devWidth = Dimensions.get('window').width;
+const devHeight = Dimensions.get('window').height;
 export default class Content extends Component {
     constructor(){
         super();
@@ -62,9 +65,9 @@ export default class Content extends Component {
                                 c = 'red'
                             }
                             return <View style={styles.boxStyle}>
-                               <Text style={{width:250}}>{item.title}</Text>
-                               <Text>{item.create_at}</Text>
-                               <Text style={{color:c}}>{temp}</Text>
+                               <Text style={{width:devWidth*0.5}}>{item.title}</Text>
+                               <Text style={{width:devWidth*0.25}}>{item.create_at}</Text>
+                               <Text style={{width:devWidth*0.2,color:c}}>{temp}</Text>
                             </View>
                         }}
                 />
@@ -82,11 +85,11 @@ export default class Content extends Component {
 const styles = StyleSheet.create({
     boxStyle:{
         flexDirection:'row',
-        height:25,
+        height:devHeight*0.03,
         justifyContent:"space-between",
         marginTop:5,
-        paddingLeft:10,
-        paddingRight:10
+        paddingLeft:devWidth*0.03,
+        paddingRight:devWidth*0.02
     },
     changeBox:{
         flexDirection:'row',

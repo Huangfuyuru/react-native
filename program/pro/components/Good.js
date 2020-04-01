@@ -63,8 +63,8 @@ export default class Jia extends Component {
                       renderItem={(item)=>{
                         item = item.item
                         return <View style={styles.goodsChild}>
-                          <Image style={{width:150,height:150}} source={item.imgsrc}/>
-                          <Text>{item.name}</Text>
+                          <Image style={{width:devWidth*0.3,height:devHeight*0.15}} source={item.imgsrc}/>
+                          <Text style={{fontSize:devWidth*0.03}}>{item.name}</Text>
                           <Text style={{color:'red'}}>{item.pirce}</Text>
                          </View>
                       }}

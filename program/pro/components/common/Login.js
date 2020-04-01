@@ -21,12 +21,17 @@ export default class Login extends Component{
         let u = await AsyncStorage.getItem('user2')
         if(u){
             u = JSON.parse(u);
-            console.log(u.username,u.pwd)
-            if(this.state.username === u.username && this.state.pwd === u.pwd){
-                await AsyncStorage.setItem('user',JSON.stringify(u))
-                Actions.lightbox()
-            }else{
+            for(var i=0;i<u.length;i++){
+                if(this.state.username === u[i].username && this.state.pwd === u[i].pwd){
+                    await AsyncStorage.setItem('user',JSON.stringify(u[i]));
+                    break;
+                    
+                }
+            } 
+            if(i === u.length){
                 this.setState({isloading:false,isOK:true})
+            }else{
+                Actions.lightbox()
             }
         }else{
             this.setState({isloading:false,isOK:true})
