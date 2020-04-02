@@ -10,7 +10,7 @@ export default class Login extends Component{
     constructor(){
         super();
         this.state={
-            username:'xxx',
+            username:'',
             pwd:'',
             isloading:false,
             isOK:false,
@@ -18,13 +18,11 @@ export default class Login extends Component{
         }
     }
     componentDidMount(){
-        console.log('xxx')
         AsyncStorage.getItem('user2')
         .then(res=>{
             if(res){
                 res = JSON.parse(res);
                 this.setState({list:res});
-                console.log(this.state.list)
             }
         })
     }
@@ -34,7 +32,9 @@ export default class Login extends Component{
             username:this.state.username,
             pwd:this.state.pwd
         }).then(res=>{
+            console.log('res',res.data)
             if(res.data.token === 1){
+                console.log('注册失败')
                 this.setState({isOK:true,isloading:false})
             }else{
                 this.setState({list:[...this.state.list,res.data]},()=>{

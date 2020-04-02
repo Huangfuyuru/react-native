@@ -37,6 +37,7 @@ import SignUp from './components/common/SignUp'
 console.disableYellowBox = true
 const App = () => {
   let now = 0;
+  let now2 = 0;
   let [isInstall,setIsInstall] = useState(true);
   let [isLogin,setLogin] = useState(false);
 
@@ -79,11 +80,13 @@ const App = () => {
       <SwiperPage afterInstall={start}/>
     )
   }
+
+
   return (
    
     <Router
       backAndroidHandler={()=>{
-        if(Actions.currentScene != 'homeC'){
+        if(Actions.currentScene != 'homeC' && Actions.currentScene!='login'){
           console.log('不是homeC')
           Actions.pop();
           return true;
@@ -92,7 +95,7 @@ const App = () => {
           if(new Date().getTime() - now <2000){
             BackHandler.exitApp()
           }else{
-            ToastAndroid.show('确定退出码',100);
+            ToastAndroid.show('确定退出吗',100);
             now = new Date().getTime();
             return true
           }
@@ -140,9 +143,8 @@ const App = () => {
               navBarButtonColor="white" 
               key="content" 
               component={Content}
-              renderLeftButton={()=><Icon name="arrow-left" color="white" style={{fontSize:30,width:devWidth*0.35}}/>}
-              renderRightButton={()=><Icon name="ellipsis" color="white" style={{fontSize:30,width:devWidth*0.25}}/>}
-              renderTitle={()=><View style={{width:devWidth*0.5,justifyContent:'center'}}><Text style={{fontSize:20,color:'white'}}>我的发布</Text></View>}
+              renderRightButton={()=><Icon name="ellipsis" color="white" style={{fontSize:30,marginRight:25}}/>}
+              renderTitle={()=><View style={{width:devWidth*0.5,marginLeft:140}}><Text style={{fontSize:20,color:'white'}}>我的发布</Text></View>}
               />
             </Scene>
           </Tabs>

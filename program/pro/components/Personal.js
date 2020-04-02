@@ -34,14 +34,15 @@ export default class Personal extends Component {
                 {iconN:'share-alt',title:'我的活动'},
                 {iconN:'edit',title:'我的发布'}
             ],
-            imgurl:''
+            // <Image source={require('./components/img/icon/user.png')}/>
+            imgurl:require('../assets/tou.jpg'),
         }
     }
     componentWillMount(){
         AsyncStorage.getItem('imgurl').then((res)=>{
-            this.setState({imgurl:JSON.parse(res)});
-            console.log("获取成功");
-            console.log("n",JSON.parse(res));
+            if(res){
+                this.setState({imgurl:JSON.parse(res)});
+            }
         })
     }
     takePhoto = () =>{
@@ -119,9 +120,11 @@ export default class Personal extends Component {
                         />
                     </View>
                 </View>
+                <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <TouchableOpacity style={styles.exit} onPress={this.exitG}>
                     <Text style={{color:'white'}}>退出登陆</Text>
                 </TouchableOpacity>
+                </View>
             </View>
         )
     }
@@ -135,7 +138,6 @@ const styles = StyleSheet.create({
         backgroundColor:'red',
         alignItems:'center',
         justifyContent:'center',
-        marginLeft:175
     },
     all:{
         backgroundColor:'#f0f0f0',

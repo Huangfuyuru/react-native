@@ -65,9 +65,9 @@ export default class Content extends Component {
                                 c = 'red'
                             }
                             return <View style={styles.boxStyle}>
-                               <Text style={{width:devWidth*0.5}}>{item.title}</Text>
-                               <Text style={{width:devWidth*0.25}}>{item.create_at}</Text>
-                               <Text style={{width:devWidth*0.2,color:c}}>{temp}</Text>
+                               <Text style={{width:devWidth*0.5,paddingLeft:devWidth*0.03}}>{item.title}</Text>
+                               <Text style={{width:devWidth*0.3,paddingLeft:devWidth*0.03}}>{item.create_at}</Text>
+                               <Text style={{width:devWidth*0.15,paddingLeft:devWidth*0.03,color:c}}>{temp}</Text>
                             </View>
                         }}
                 />
@@ -88,8 +88,6 @@ const styles = StyleSheet.create({
         height:devHeight*0.03,
         justifyContent:"space-between",
         marginTop:5,
-        paddingLeft:devWidth*0.03,
-        paddingRight:devWidth*0.02
     },
     changeBox:{
         flexDirection:'row',

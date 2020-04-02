@@ -3,6 +3,7 @@ import {View,Text, Image,TextInput,ScrollView,StyleSheet, StatusBar,Dimensions, 
 import {Icon} from '@ant-design/react-native'
 const devWidth = Dimensions.get('window').width;
 const devHeight = Dimensions.get('window').height;
+import Swiper from 'react-native-swiper';
 export default class Home extends Component {
     constructor(){
         super();
@@ -41,17 +42,17 @@ export default class Home extends Component {
                 </View>
 
                 <View style={{height:devHeight*0.25}}>
-                    <ScrollView horizontal={true} pagingEnabled={true} contentContainerStyle={{height:220}}>
-                        <View style={styles.style1}>
-                            <Image style={styles.imageStyle} source={{uri:'http://pic1.win4000.com/wallpaper/2020-02-27/5e57258de761a.jpg'}}/>
+                    <Swiper showsButtons={true} autoplay={true}>
+                        <View>
+                            <Image style={{height:devHeight*0.25,width:devWidth}} source={require('../assets/lun.png')}/>
                         </View>
-                        <View style={styles.style1}>
-                            <Image style={styles.imageStyle} source={{uri:'http://pic1.win4000.com/wallpaper/2020-02-27/5e57258ce0778.jpg'}}/>
+                        <View>
+                            <Image style={{height:devHeight*0.25,width:devWidth}} source={require('../assets/lun2.jpg')}/>
                         </View>
-                        <View style={styles.style1}>
-                            <Image style={styles.imageStyle} source={{uri:'http://pic1.win4000.com/wallpaper/2020-02-27/5e57258f4f7b0.jpg'}}/>
+                        <View>
+                            <Image style={{height:devHeight*0.25,width:devWidth}} source={require('../assets/lun.png')}/>
                         </View>
-                    </ScrollView>
+                    </Swiper>
                 </View>
 
                 <View>

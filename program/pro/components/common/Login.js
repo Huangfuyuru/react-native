@@ -17,7 +17,7 @@ export default class Login extends Component{
         }
     }
     login=async ()=>{
-        this.setState({isloading:true})
+        this.setState({isloading:true,isOK:false})
         let u = await AsyncStorage.getItem('user2')
         if(u){
             u = JSON.parse(u);
@@ -25,7 +25,6 @@ export default class Login extends Component{
                 if(this.state.username === u[i].username && this.state.pwd === u[i].pwd){
                     await AsyncStorage.setItem('user',JSON.stringify(u[i]));
                     break;
-                    
                 }
             } 
             if(i === u.length){
